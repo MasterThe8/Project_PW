@@ -1,14 +1,7 @@
 <?php
-    $servername = "localhost";
-    $username = "root";
-    $password = "";
-    $dbname = "ci_bsms_db";
+session_start();
 
-    $conn = new mysqli($servername, $username, $password, $dbname);
-
-    if ($conn->connect_error) {
-        die("Koneksi gagal: " . $conn->connect_error);
-    }
+require_once '../connection.php';
 
     $sqlBuku = "SELECT COUNT(*) AS total_book FROM book";
     $resultBuku = $conn->query($sqlBuku);
@@ -80,7 +73,7 @@
     <!-- Main Navbar -->
     <div class="main-navbar">
         <h2>Book Store Management System</h2>
-        <div class="logout-btn">
+        <div class="logout-btn" onclick="logout()">
             <span>Logout</span>
             <img src="../img/icons8-shutdown-64.png">
         </div>
@@ -91,45 +84,99 @@
         <div class="side-navbar">
             <div class="user-profile">
                 <img src="../img/avatar 1.png" alt="Profile Picture" class="profile-picture">
-                <br><span class="username">Username</span>
+                <br><span class="username"><?php echo $_SESSION['username']; ?></span>
             </div>
             <div class="nav-items">
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/dasboard.png">
-                        <span>Dasboard</span>
-                    </a>
-                </div>
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/category.png">
-                        <span>Category</span>
-                    </a>
-                </div>
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/books.png">
-                        <span>Books</span>
-                    </a>
-                </div>
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/transaction.png">
-                        <span>Transaction</span>
-                    </a>
-                </div>
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/history.png">
-                        <span>History</span>
-                    </a>
-                </div>
-                <div class="nav-items-list">                
-                    <a href="#" class="nav-link">
-                        <img src="../img/usermanagement.png">
-                        <span>User Management</span>
-                    </a>
-                </div>
+                <?php
+                if (isset($_SESSION['level'])) {
+                    $role = $_SESSION['level'];
+
+                    if ($role === 'admin') {
+                    echo '
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/dasboard.png">
+                                <span>Dasboard</span>
+                            </a>
+                        </div>
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/category.png">
+                                <span>Category</span>
+                            </a>
+                        </div>
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/books.png">
+                                <span>Books</span>
+                            </a>
+                        </div>
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/transaction.png">
+                                <span>Transaction</span>
+                            </a>
+                        </div>
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/history.png">
+                                <span>History</span>
+                            </a>
+                        </div>
+                        <div class="nav-items-list">                
+                            <a href="#" class="nav-link">
+                                <img src="../img/usermanagement.png">
+                                <span>User Management</span>
+                            </a>
+                        </div>
+                    ';
+                    }
+                    elseif ($role === 'staff') {
+                    echo '
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/dasboard.png">
+                            <span>Dasboard</span>
+                        </a>
+                    </div>
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/category.png">
+                            <span>Category</span>
+                        </a>
+                    </div>
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/books.png">
+                            <span>Books</span>
+                        </a>
+                    </div>
+                    ';
+                    }
+                    elseif ($role === 'cashier') {
+                    echo '
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/dasboard.png">
+                            <span>Dasboard</span>
+                        </a>
+                    </div>
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/transaction.png">
+                            <span>Transaction</span>
+                        </a>
+                    </div>
+                    <div class="nav-items-list">                
+                        <a href="#" class="nav-link">
+                            <img src="../img/history.png">
+                            <span>History</span>
+                        </a>
+                    </div>
+                    ';
+                    }
+                }
+                ?>
             </div>
         </div>
         
@@ -181,7 +228,7 @@
         </div>
     </div>
 
-    <script src="script/index.js"></script>
+    <script src="../script/script.js"></script>
 
 </body>
 </html>

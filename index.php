@@ -1,14 +1,7 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "ci_bsms_db";
+session_start();
 
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-if ($conn->connect_error) {
-    die("Koneksi gagal: " . $conn->connect_error);
-}
+require_once 'connection.php';
 
 function decryptMD5($input) {
     return hash('md5', $input);
@@ -28,8 +21,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $result = $conn->query($sql);
 
         if ($result->num_rows > 0) {
-            header("Location: application/dasboard.php");
-            exit();
+            $row = $result->fetch_assoc();
+            $role = $row['level'];
+
+            if ($role == 'admin') {
+                $_SESSION['username'] = $username;
+                $_SESSION['level'] = 'admin';
+                header("Location: application/dasboard.php");
+                exit();
+            } else if ($role == 'staff') {
+                $_SESSION['username'] = $username;
+                $_SESSION['level'] = 'staff';
+                header("Location: application/dasboard.php");
+                exit();
+            } else if ($role == 'cashier') {
+                $_SESSION['username'] = $username;
+                $_SESSION['level'] = 'cashier';
+                header("Location: application/dasboard.php");
+                exit();
+            }
         } else {
             $errorMessage = "Username atau Password yang anda masukkan salah!";
         }
@@ -38,6 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 $conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -69,6 +80,6 @@ $conn->close();
         </form>
     </div>
 
-    <script src="script/index.js"></script>
+    <script src="script/script.js"></script>
 </body>
 </html>

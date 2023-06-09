@@ -32,6 +32,7 @@ a {
 
 .logout-btn{
     margin-left: auto;
+    cursor: pointer;
 }
 
 .logout-btn span{
@@ -70,10 +71,10 @@ a {
     border-radius: 50%;
   }
   
-  .username {
+  .user-profile .username {
     font-weight: bold;
     font-size: 16px;
-  }  
+  } 
 
   .nav-items {
     padding: 10px;
