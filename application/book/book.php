@@ -255,7 +255,7 @@ require_once '../../connection.php';
             <div class="main-content">
                 <div class="content">
                     <div class="content-head">
-                        <button onclick="addBook()">Add Category</button>
+                        <button onclick="addBook()">Add New Book</button>
                     </div>
                     <div class="table-category">
                     <table>
