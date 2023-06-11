@@ -102,31 +102,31 @@ require_once '../../connection.php';
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="../category/category.php" class="nav-link">
+                            <a href="category.php" class="nav-link">
                                 <img src="../../img/category.png">
                                 <span>Category</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="../book/book.php" class="nav-link">
                                 <img src="../../img/books.png">
                                 <span>Books</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="../transaction/transaction.php" class="nav-link">
                                 <img src="../../img/transaction.png">
                                 <span>Transaction</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="../history/history.php" class="nav-link">
                                 <img src="../../img/history.png">
                                 <span>History</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="../user/user.php" class="nav-link">
                                 <img src="../../img/usermanagement.png">
                                 <span>User Management</span>
                             </a>
@@ -142,13 +142,13 @@ require_once '../../connection.php';
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="../category/category.php" class="nav-link">
+                        <a href="category.php" class="nav-link">
                             <img src="../../img/category.png">
                             <span>Category</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
+                        <a href="../book/book.php" class="nav-link">
                             <img src="../../img/books.png">
                             <span>Books</span>
                         </a>

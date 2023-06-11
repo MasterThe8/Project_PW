@@ -4,6 +4,8 @@ session_start();
 require_once '../../connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    var_dump($_POST);
+
     $userCode = $_POST['userCodeDelete'];
 
     $sql = "DELETE FROM user WHERE user_code = '$userCode'";

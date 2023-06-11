@@ -91,8 +91,11 @@ require_once '../../connection.php';
             <input type="text" id="usernameDelete" name="usernameDelete" readonly>
             <br>
             <label for="UserLevel">Level :</label>
-            <input type="text" id="userLevel" name="userLevelDelete" readonly>
-            <br>
+            <select id="userLevel" name="userLevelEdit" readonly>
+                <option>admin</option>
+                <option>cashier</option>
+                <option>staff</option>
+            </select>
             <div class="dialog-btn">
                 <button class="save-btn" type="submit">Delete</button>
                 <button class="close-btn" type="button" onclick="closeUser()">Close</button>
@@ -127,45 +130,45 @@ require_once '../../connection.php';
                     $role = $_SESSION['level'];
 
                     if ($role === 'admin') {
-                    echo '
-                        <div class="nav-items-list">                
-                            <a href="dashboard.php" class="nav-link">
-                                <img src="../img/dashboard.png">
-                                <span>Dashboard</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="category/category.php" class="nav-link">
-                                <img src="../img/category.png">
-                                <span>Category</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="book/book.php" class="nav-link">
-                                <img src="../img/books.png">
-                                <span>Books</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="transaction/transaction.php" class="nav-link">
-                                <img src="../img/transaction.png">
-                                <span>Transaction</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="history/history.php" class="nav-link">
-                                <img src="../img/history.png">
-                                <span>History</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="user/user.php" class="nav-link">
-                                <img src="../img/usermanagement.png">
-                                <span>User Management</span>
-                            </a>
-                        </div>
-                    ';
-                    }
+                        echo '
+                            <div class="nav-items-list">                
+                                <a href="../dashboard.php" class="nav-link">
+                                    <img src="../../img/dashboard.png">
+                                    <span>Dashboard</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../category/category.php" class="nav-link">
+                                    <img src="../../img/category.png">
+                                    <span>Category</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../book/book.php" class="nav-link">
+                                    <img src="../../img/books.png">
+                                    <span>Books</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../transaction/transaction.php" class="nav-link">
+                                    <img src="../../img/transaction.png">
+                                    <span>Transaction</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../history/history.php" class="nav-link">
+                                    <img src="../../img/history.png">
+                                    <span>History</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../user/user.php" class="nav-link">
+                                    <img src="../../img/usermanagement.png">
+                                    <span>User Management</span>
+                                </a>
+                            </div>
+                        ';
+                        }
                 }
                 ?>
             </div>

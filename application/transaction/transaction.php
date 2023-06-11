@@ -44,67 +44,67 @@ require_once '../../connection.php';
                     $role = $_SESSION['level'];
 
                     if ($role === 'admin') {
-                    echo '
-                        <div class="nav-items-list">                
-                            <a href="dashboard.php" class="nav-link">
-                                <img src="../img/dashboard.png">
-                                <span>Dashboard</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="category/category.php" class="nav-link">
-                                <img src="../img/category.png">
-                                <span>Category</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="book/book.php" class="nav-link">
-                                <img src="../img/books.png">
-                                <span>Books</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="transaction/transaction.php" class="nav-link">
-                                <img src="../img/transaction.png">
-                                <span>Transaction</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="history/history.php" class="nav-link">
-                                <img src="../img/history.png">
-                                <span>History</span>
-                            </a>
-                        </div>
-                        <div class="nav-items-list">                
-                            <a href="user/user.php" class="nav-link">
-                                <img src="../img/usermanagement.png">
-                                <span>User Management</span>
-                            </a>
-                        </div>
-                    ';
-                    }
-                    elseif ($role === 'cashier') {
-                    echo '
-                    <div class="nav-items-list">                
-                        <a href="dashboard.php" class="nav-link">
-                            <img src="../img/dashboard.png">
-                            <span>Dashboard</span>
-                        </a>
-                    </div>
-                    <div class="nav-items-list">                
-                        <a href="transaction/transaction.php" class="nav-link">
-                            <img src="../img/transaction.png">
-                            <span>Transaction</span>
-                        </a>
-                    </div>
-                    <div class="nav-items-list">                
-                        <a href="history/history.php" class="nav-link">
-                            <img src="../img/history.png">
-                            <span>History</span>
-                        </a>
-                    </div>
-                    ';
-                    }
+                        echo '
+                            <div class="nav-items-list">                
+                                <a href="../dashboard.php" class="nav-link">
+                                    <img src="../../img/dashboard.png">
+                                    <span>Dashboard</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../category/category.php" class="nav-link">
+                                    <img src="../../img/category.png">
+                                    <span>Category</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../book/book.php" class="nav-link">
+                                    <img src="../../img/books.png">
+                                    <span>Books</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../transaction/transaction.php" class="nav-link">
+                                    <img src="../../img/transaction.png">
+                                    <span>Transaction</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../history/history.php" class="nav-link">
+                                    <img src="../../img/history.png">
+                                    <span>History</span>
+                                </a>
+                            </div>
+                            <div class="nav-items-list">                
+                                <a href="../user/user.php" class="nav-link">
+                                    <img src="../../img/usermanagement.png">
+                                    <span>User Management</span>
+                                </a>
+                            </div>
+                        ';
+                        }
+                        elseif ($role === 'cashier') {
+                            echo '
+                                <div class="nav-items-list">                
+                                    <a href="../dashboard.php" class="nav-link">
+                                        <img src="../../img/dashboard.png">
+                                        <span>Dashboard</span>
+                                    </a>
+                                </div>
+                                <div class="nav-items-list">                
+                                    <a href="../transaction/transaction.php" class="nav-link">
+                                        <img src="../../img/transaction.png">
+                                        <span>Transaction</span>
+                                    </a>
+                                </div>
+                                <div class="nav-items-list">                
+                                    <a href="../history/history.php" class="nav-link">
+                                        <img src="../../img/history.png">
+                                        <span>History</span>
+                                    </a>
+                                </div>
+                            ';
+                            }
                 }
                 ?>
             </div>

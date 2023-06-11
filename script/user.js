@@ -43,10 +43,20 @@ function deleteUser(code, full, name, lvl){
     deleteUserDialog.style.zIndex  = "999";
     document.body.style.overflow = "hidden";
 
-    document.getElementById("userCodedelete").value = code;
-    document.getElementById("userFullnamedelete").value = full;
-    document.getElementById("usernamedelete").value = name;
-    document.getElementById("userLevel").value = lvl;
+    document.getElementById("userCodeDelete").value = code;
+    document.getElementById("userFullnameDelete").value = full;
+    document.getElementById("usernameDelete").value = name;
+
+    let userLevelSelect = document.getElementById("userLevel");
+    let optionElements = userLevelSelect.options;
+    for (let i = 0; i < optionElements.length; i++) {
+        let option = optionElements[i];
+        if (option.value === lvl) {
+            option.selected = true;
+            break;
+        }
+        option.disabled = true;
+    }
 }
 
 function closeUser(){

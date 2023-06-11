@@ -13,7 +13,7 @@ require_once '../../connection.php';
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1366">
     <title>History - BSMS</title>
-    <link rel="stylesheet" type="text/css" href="../../style/book.css">
+    <link rel="stylesheet" type="text/css" href="../../style/history.css">
     <script src="../../script/script.js" defer></script>
     <script src="../../script/book.js" defer></script>
 </head>
@@ -39,46 +39,45 @@ require_once '../../connection.php';
                 </div>
             </div>
             <div class="nav-items">
-            <div class="nav-items">
-                <?php
+            <?php
                 if (isset($_SESSION['level'])) {
                     $role = $_SESSION['level'];
 
                     if ($role === 'admin') {
                     echo '
                         <div class="nav-items-list">                
-                            <a href="dashboard.php" class="nav-link">
-                                <img src="../img/dashboard.png">
+                            <a href="../dashboard.php" class="nav-link">
+                                <img src="../../img/dashboard.png">
                                 <span>Dashboard</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="category/category.php" class="nav-link">
-                                <img src="../img/category.png">
+                            <a href="../category/category.php" class="nav-link">
+                                <img src="../../img/category.png">
                                 <span>Category</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="book/book.php" class="nav-link">
-                                <img src="../img/books.png">
+                            <a href="../book/book.php" class="nav-link">
+                                <img src="../../img/books.png">
                                 <span>Books</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="transaction/transaction.php" class="nav-link">
-                                <img src="../img/transaction.png">
+                            <a href="../transaction/transaction.php" class="nav-link">
+                                <img src="../../img/transaction.png">
                                 <span>Transaction</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="history/history.php" class="nav-link">
-                                <img src="../img/history.png">
+                            <a href="../history/history.php" class="nav-link">
+                                <img src="../../img/history.png">
                                 <span>History</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="user/user.php" class="nav-link">
-                                <img src="../img/usermanagement.png">
+                            <a href="../user/user.php" class="nav-link">
+                                <img src="../../img/usermanagement.png">
                                 <span>User Management</span>
                             </a>
                         </div>
@@ -87,20 +86,20 @@ require_once '../../connection.php';
                     elseif ($role === 'cashier') {
                     echo '
                     <div class="nav-items-list">                
-                        <a href="dashboard.php" class="nav-link">
-                            <img src="../img/dashboard.png">
+                        <a href="../dashboard.php" class="nav-link">
+                            <img src="../../img/dashboard.png">
                             <span>Dashboard</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="transaction/transaction.php" class="nav-link">
-                            <img src="../img/transaction.png">
+                        <a href="../transaction/transaction.php" class="nav-link">
+                            <img src="../../img/transaction.png">
                             <span>Transaction</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="history/history.php" class="nav-link">
-                            <img src="../img/history.png">
+                        <a href="../history/history.php" class="nav-link">
+                            <img src="../../img/history.png">
                             <span>History</span>
                         </a>
                     </div>
