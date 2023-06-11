@@ -4,16 +4,16 @@
 ### Account
 - Admin1
 <br>Username : admin
-Password : admin#123
+<br>Password : admin#123
 
 - Admin2
-Username : gufar
-Password : lol
+<br>Username : gufar
+<br>Password : lol
 
 - Staff
-Username : lz
-Password : lol
+<br>Username : lz
+<br>Password : lol
 
 - Cashier
-Username : Sekai
-Password : lol
+<br>Username : Sekai
+<br>Password : lol
