@@ -23,21 +23,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
             $role = $row['level'];
+            $fullname = $row['fullname'];
 
             if ($role == 'admin') {
+                $_SESSION['fullname'] = $fullname;
                 $_SESSION['username'] = $username;
                 $_SESSION['level'] = 'admin';
-                header("Location: application/dasboard.php");
+                header("Location: application/dashboard.php");
                 exit();
             } else if ($role == 'staff') {
+                $_SESSION['fullname'] = $fullname;
                 $_SESSION['username'] = $username;
                 $_SESSION['level'] = 'staff';
-                header("Location: application/dasboard.php");
+                header("Location: application/dashboard.php");
                 exit();
             } else if ($role == 'cashier') {
+                $_SESSION['fullname'] = $fullname;
                 $_SESSION['username'] = $username;
                 $_SESSION['level'] = 'cashier';
-                header("Location: application/dasboard.php");
+                header("Location: application/dashboard.php");
                 exit();
             }
         } else {
@@ -55,7 +59,7 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=1366">
     <title>Book Store Management System</title>
     <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>

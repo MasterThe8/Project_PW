@@ -65,15 +65,15 @@ require_once '../connection.php';
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Store Management System</title>
-    <link rel="stylesheet" type="text/css" href="../style/dasboard.css">
+    <meta name="viewport" content="width=1366">
+    <title>Dashboard - BSMS</title>
+    <link rel="stylesheet" type="text/css" href="../style/dashboard.css">
 </head>
 <body>
     <!-- Main Navbar -->
     <div class="main-navbar">
         <h2>Book Store Management System</h2>
-        <div class="logout-btn" onclick="logout()">
+        <div class="logout-btn" onclick="logoutd()">
             <span>Logout</span>
             <img src="../img/icons8-shutdown-64.png">
         </div>
@@ -84,7 +84,11 @@ require_once '../connection.php';
         <div class="side-navbar">
             <div class="user-profile">
                 <img src="../img/avatar 1.png" alt="Profile Picture" class="profile-picture">
-                <br><span class="username"><?php echo $_SESSION['username']; ?></span>
+                <div class="user-info">
+                    <span class="username"><?php echo $_SESSION['fullname']; ?></span>
+                    <br>
+                    <span class="role"><?php echo $_SESSION['level']; ?></span>
+                </div>
             </div>
             <div class="nav-items">
                 <?php
@@ -94,37 +98,37 @@ require_once '../connection.php';
                     if ($role === 'admin') {
                     echo '
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
-                                <img src="../img/dasboard.png">
-                                <span>Dasboard</span>
+                            <a href="dashboard.php" class="nav-link">
+                                <img src="../img/dashboard.png">
+                                <span>Dashboard</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="category/category.php" class="nav-link">
                                 <img src="../img/category.png">
                                 <span>Category</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="book/book.php" class="nav-link">
                                 <img src="../img/books.png">
                                 <span>Books</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="transaction/transaction.php" class="nav-link">
                                 <img src="../img/transaction.png">
                                 <span>Transaction</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="history/history.php" class="nav-link">
                                 <img src="../img/history.png">
                                 <span>History</span>
                             </a>
                         </div>
                         <div class="nav-items-list">                
-                            <a href="#" class="nav-link">
+                            <a href="user/user.php" class="nav-link">
                                 <img src="../img/usermanagement.png">
                                 <span>User Management</span>
                             </a>
@@ -134,19 +138,19 @@ require_once '../connection.php';
                     elseif ($role === 'staff') {
                     echo '
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
-                            <img src="../img/dasboard.png">
-                            <span>Dasboard</span>
+                        <a href="dashboard.php" class="nav-link">
+                            <img src="../img/dashboard.png">
+                            <span>Dashboard</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
+                        <a href="category/category.php" class="nav-link">
                             <img src="../img/category.png">
                             <span>Category</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
+                        <a href="book/book.php" class="nav-link">
                             <img src="../img/books.png">
                             <span>Books</span>
                         </a>
@@ -156,19 +160,19 @@ require_once '../connection.php';
                     elseif ($role === 'cashier') {
                     echo '
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
-                            <img src="../img/dasboard.png">
-                            <span>Dasboard</span>
+                        <a href="dashboard.php" class="nav-link">
+                            <img src="../img/dashboard.png">
+                            <span>Dashboard</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
+                        <a href="transaction/transaction.php" class="nav-link">
                             <img src="../img/transaction.png">
                             <span>Transaction</span>
                         </a>
                     </div>
                     <div class="nav-items-list">                
-                        <a href="#" class="nav-link">
+                        <a href="history/history.php" class="nav-link">
                             <img src="../img/history.png">
                             <span>History</span>
                         </a>
@@ -182,7 +186,7 @@ require_once '../connection.php';
         
         <div class="container">
             <div class="content-page-title">
-                <span>Dasboard</span>
+                <span>Dashboard</span>
             </div>
             <div class="main-content">
                 <div class="content ct-book">
