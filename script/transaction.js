@@ -1,58 +1,83 @@
 let cart = [];
 
-function addToCart(code, title, price, stock) {
-    // Cek apakah buku sudah ada dalam cart berdasarkan code
-    let existingItem = cart.find(item => item.code === code);
-
-    if (existingItem) {
-        // Jika buku sudah ada, tambahkan satu ke stock
-        existingItem.stock += 1;
-        existingItem.subtotal = existingItem.stock * price;
-    } else {
-        // Jika buku belum ada, buat objek baru
-        let newItem = {
-            code: code,
-            title: title,
-            price: price,
-            stock: 1,
-            subtotal: price
-        };
-    
-        cart.push(newItem);
-    }
-
-    // Masukkan nilai ke Baris Tabel
-    let cartTable = document.getElementById("cartTable");
-    cartTable.innerHTML = ""; // Menghapus isi tbody sebelum memasukkan data baru
-
-    cart.forEach((item, index) => {
-        let tableRow = `<tr>
-                            <td>${item.code}</td>
-                            <td>${item.title}</td>
-                            <td>${item.stock}</td>
-                            <td>${item.price}</td>
-                            <td>${item.subtotal}</td>
-                            <td><button class="delete-cart-item" onclick="deleteCartItem('${item.code}')">Delete</button></td>
-                        </tr>`;
-
-        cartTable.innerHTML += tableRow;
+function updateStock(code) {
+    fetch('updateStock.php', {
+    method: 'POST',
+    headers: {
+        'Content-type': 'application/x-www-form-urlencoded'
+    },
+    body: 'code=' + encodeURIComponent(code)
+    })
+    .then(response => {
+        if (response.ok) {
+        let stockElement = document.getElementById('stock_' + code);
+        let currentStock = parseInt(stockElement.textContent);
+        if (currentStock > 0) {
+            let newStock = currentStock - 1;
+            stockElement.textContent = newStock.toString();
+        }
+        } else {
+        throw new Error('Failed to update stock');
+        }
+    })
+    .catch(error => {
+        console.error(error);
+        alert('Failed to update stock');
     });
-
-    let stockElement = document.getElementById('stock_' + code);
-    let currentStock = parseInt(stockElement.textContent);
-    let newStock = currentStock - 1;
-    stockElement.textContent = newStock.toString();
 }
 
+function addToCart(code, title, price) {
+  let stockElement = document.getElementById('stock_' + code);
+  let initialStock = parseInt(stockElement.dataset.initialStock);
+
+  if (initialStock <= 0) {
+    alert("Stock Habis!");
+    return;
+  }
+
+  updateStock(code);
+
+  let existingItem = cart.find(item => item.code === code);
+
+  if (existingItem) {
+    existingItem.stock += 1;
+    existingItem.subtotal = existingItem.stock * price;
+  } else {
+    let newItem = {
+      code: code,
+      title: title,
+      price: price,
+      stock: 1,
+      subtotal: price
+    };
+
+    cart.push(newItem);
+  }
+
+  let cartTable = document.getElementById("cartTable");
+  cartTable.innerHTML = "";
+
+  cart.forEach((item, index) => {
+    let tableRow = `<tr>
+                        <td>${item.code}</td>
+                        <td>${item.title}</td>
+                        <td>${item.stock}</td>
+                        <td>${item.price}</td>
+                        <td>${item.subtotal}</td>
+                        <td><button class="delete-cart-item" onclick="deleteCartItem('${item.code}')">Delete</button></td>
+                    </tr>`;
+
+    cartTable.innerHTML += tableRow;
+  });
+}
+
+
+
 function deleteCartItem(code) {
-    // Cari indeks item yang akan dihapus
     let index = cart.findIndex(item => item.code === code);
 
     if (index !== -1) {
-        // Hapus item dari array cart berdasarkan indeks
         cart.splice(index, 1);
-
-        // Perbarui tampilan tabel cart
         let cartTable = document.getElementById("cartTable");
         cartTable.innerHTML = "";
 
@@ -63,32 +88,35 @@ function deleteCartItem(code) {
                                 <td>${item.stock}</td>
                                 <td>${item.price}</td>
                                 <td>${item.subtotal}</td>
-                                <td><button onclick="deleteCartItem('${item.code}')">Delete</button></td>
+                                <td><button class="delete-cart-item" onclick="deleteCartItem('${item.code}')">Delete</button></td>
                             </tr>`;
 
             cartTable.innerHTML += tableRow;
         });
+
+        let stockElement = document.getElementById('stock_' + code);
+        let initialStock = stockElement.getAttribute('data-initial-stock');
+        stockElement.textContent = initialStock;
     }
 }
 
+
 function prepareFormData() {
-    // Ambil nilai cashierName, customerName, dan cartData dari elemen HTML
+    
     let cashierName = document.getElementById("cashierName").value;
     let customerName = document.getElementById("customerName").value;
     let cartData = JSON.stringify(cart);
 
-    // Isi nilai-nilai ke elemen input tersembunyi
+    
     document.getElementById("cashierNameHidden").value = cashierName;
     document.getElementById("customerNameHidden").value = customerName;
     document.getElementById("cartDataHidden").value = cartData;
 }
 
 function clearCart() {
-    cart = []; // Menghapus semua item di keranjang
+    cart = []; 
     let cartTable = document.getElementById("cartTable");
-    cartTable.innerHTML = ""; // Menghapus isi tbody
-  
-    // Refresh halaman
+    cartTable.innerHTML = "";
+
     location.reload();
-  }
-  
+}

@@ -155,15 +155,15 @@ require_once '../../connection.php';
                                         $bookTitle = $row["book_title"];
                                         $bookPrice = $row["price"];
                                         $bookStock = $row["stock"];
-
+                                        
                                         echo "<tr>";
                                         echo "<td>" . $bookCode . "</td>";
                                         echo "<td>" . $bookTitle . "</td>";
                                         echo "<td>" . $bookCategory . "</td>";
                                         echo "<td>" . $bookPrice . "</td>";
-                                        echo "<td id='stock_$bookCode'>" . $bookStock . "</td>";
+                                        echo "<td id='stock_$bookCode' data-initial-stock='$bookStock'>" . $bookStock . "</td>";
                                         echo "<td>";
-                                        echo "<button class='edit-btn-table' onclick='addToCart(\"$bookCode\", \"$bookTitle\", \"$bookPrice\", \"$bookStock\")'>🛒</button>";
+                                        echo "<button class='edit-btn-table' onclick='addToCart(\"$bookCode\", \"$bookTitle\", \"$bookPrice\");'>🛒</button>";
                                         echo "</td>";
                                         echo "</tr>";
                                     }
