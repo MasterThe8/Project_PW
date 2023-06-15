@@ -12,7 +12,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $checkResult = $conn->query($checkSql);
 
     if ($checkResult->num_rows > 0) {
-        echo "Kode kategori sudah ada. Silakan gunakan kode yang lain.";
+        echo '<script>alert("Kode kategori sudah ada. Silakan gunakan kode yang lain."); window.location.href = "category.php";</script>';
     } else {
         $insertSql = "INSERT INTO book_category (category_code, category_name) VALUES ('$categoryCode', '$categoryName')";
 

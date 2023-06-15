@@ -23,6 +23,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newUserCode = 1;
     }
 
+    if ($level === null || !in_array($level, ['admin', 'staff', 'cashier'])) {
+        echo '<script>alert("Menambah User Baru Gagal!, Mohon Memilih Role Yang Benar!"); window.location.href = "user.php";</script>';
+        return;
+    }
+
     $sql = "INSERT INTO user (user_code, fullname, username, password, level) VALUES ('$newUserCode', '$fullname', '$username', '$encryptedPassword', '$level')";
 
     if ($conn->query($sql) === TRUE) {

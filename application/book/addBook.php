@@ -4,7 +4,7 @@ session_start();
 require_once '../../connection.php';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    var_dump($_POST);
+    // var_dump($_POST);
 
     $bookCode = $_POST['bookCodeAdd'];
     $bookName = $_POST['bookNameAdd'];
@@ -36,15 +36,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $destination = $uploadDirectory . $newFileName;
         move_uploaded_file($fileTmpName, $destination);
     } else {
-        echo "Gambar tidak diunggah atau terjadi kesalahan saat mengunggah gambar.";
-        // Anda bisa menambahkan tindakan lain yang sesuai dengan kebutuhan Anda jika gambar tidak diunggah
+        echo '<script>alert("Gambar tidak diunggah atau terjadi kesalahan saat mengunggah gambar."); window.location.href = "book.php";</script>';
     }
 
     $checkSql = "SELECT * FROM book WHERE book_code = '$bookCode'";
     $checkResult = $conn->query($checkSql);
 
     if ($checkResult->num_rows > 0) {
-        echo "Kode buku sudah ada. Silakan gunakan kode yang lain.";
+        echo '<script>alert("Kode buku sudah ada. Silakan gunakan kode yang lain."); window.location.href = "book.php";</script>';
     } else {
         $insertSql = "INSERT INTO book (book_code, book_title, year, category_code, price, book_img, publisher, writer, stock) VALUES ('$bookCode', '$bookName', '$bookYear', '$bookCategory', '$bookPrice', '$newFileName', '$bookPublisher', '$bookWriter', '$bookStock')";
 
