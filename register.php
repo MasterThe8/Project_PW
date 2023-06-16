@@ -23,13 +23,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $newUserCode = 1;
     }
 
+    if ($level === null || !in_array($level, ['admin', 'staff', 'cashier'])) {
+        echo '<script>alert("Registrasi Gagal!, Mohon Memilih Role Yang Benar!"); window.location.href = "register.php";</script>';
+        return;
+    }
+
     $sql = "INSERT INTO user (user_code, fullname, username, password, level) VALUES ('$newUserCode', '$fullname', '$username', '$encryptedPassword', '$level')";
 
     if ($conn->query($sql) === TRUE) {
-        $registrationSuccess = true;
+        echo '<script>alert("Registrasi Berhasil! Silahkan Login."); window.location.href = "index.php";</script>';
     } else {
-        $registrationSuccess = false;
-        echo "Error: " . $sql . "<br>" . $conn->error;
+        echo '<script>alert("Terjadi masalah, periksa kembali inputan Anda!"); window.location.href = "register.php";</script>';
     }
 
     $conn->close();
@@ -42,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=1366">
-    <title>Book Store Management System</title>
+    <title>Register - BSMS</title>
     <link rel="stylesheet" type="text/css" href="style/index.css">
 </head>
 <body>
