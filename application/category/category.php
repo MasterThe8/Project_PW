@@ -162,7 +162,7 @@ require_once '../../connection.php';
         
         <div class="container">
             <div class="content-page-title">
-                <span>Dasboard</span>
+                <span>Book Category</span>
             </div>
             <div class="main-content">
                 <div class="content">

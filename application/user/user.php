@@ -30,7 +30,7 @@ require_once '../../connection.php';
             <input type="text" id="Username" name="UsernameAdd" required>
             <br>
             <label for="UserPassword">Password :</label>
-            <input type="text" id="UserPassword" name="UserPasswordAdd" required>
+            <input type="password" id="UserPassword" name="UserPasswordAdd" required>
             <br>
             <label for="UserLevel">Level :</label>
             <select id="UserLevel" name="UserLevelAdd" required>
@@ -61,7 +61,7 @@ require_once '../../connection.php';
             <input type="text" id="usernameEdit" name="usernameEdit" required>
             <br>
             <label for="UserPassword">New Password :</label>
-            <input type="text" id="userPassword" name="userPasswordEdit" required>
+            <input type="password" id="userPassword" name="userPasswordEdit" required>
             <br>
             <label for="UserLevel">Level :</label>
             <select id="userLevel" name="userLevelEdit" required>

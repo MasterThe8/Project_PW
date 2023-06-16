@@ -3,7 +3,7 @@ session_start();
 
 require_once '../../connection.php';
 
-var_dump($_POST);
+// var_dump($_POST);
 
 $bookCode = $_POST['bookCodeEdit'];
 $bookName = $_POST['bookNameEdit'];
@@ -34,7 +34,7 @@ if (isset($_FILES['bookImgEdit']) && $_FILES['bookImgEdit']['error'] === UPLOAD_
     $bookImg = $destination;
 } else {
     // window.location.href = "book.php";
-    echo '<script>alert("Gambar tidak diunggah atau terjadi kesalahan saat mengunggah gambar."); </script>';
+    echo '<script>alert("Gambar tidak diunggah atau terjadi kesalahan saat mengunggah gambar."); window.location.href = "book.php";</script>';
 }
 
 $checkSql = "SELECT * FROM book WHERE book_code = '$bookCode'";
@@ -42,7 +42,7 @@ $checkResult = $conn->query($checkSql);
 
 if ($checkResult->num_rows > 0) {
     // window.location.href = "book.php";
-    echo '<script>alert("Kode buku sudah ada. Silakan gunakan kode yang lain."); </script>';
+    echo '<script>alert("Kode buku sudah ada. Silakan gunakan kode yang lain."); window.location.href = "book.php";</script>';
 } else {
     $sql = "UPDATE book SET
         book_title = '$bookName',
